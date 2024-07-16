@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.header .nav {
+    display: flex;
+    align-items: center;
+}
+
+.header .nav a {
+    margin-left: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.header-logo {
+    width: 50px; /* Adjust the size as needed */
+    height: auto;
+    margin-left: 10px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.main-nav a {
+    margin: 0 10px;
+    color: #000;
+    text-decoration: none;
+}
+
+.tasks-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.tasks-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tasks-content h2 {
+    text-align: left;
+    color: #333;
+}
+
+.courses-table {
+    width: 60%;
+}
+
+.courses-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.courses-table th, .courses-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.courses-table th {
+    background-color: #f4f4f4;
+}
+
+.courses-table .enroll-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.about-company {
+    width: 35%;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+}
+
+.about-company img {
+    width: 50%; /* Full width of the container */
+    margin-top: 20px;
+    margin-left: 25%;
+}
+
+.about-company-logo {
+    width: 85px; /* Adjust the size as needed */
+    height: auto;
+}
+
+.recent-actions {
+    width: 100%;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.footer img {
+    margin-top: 10px;
+}
+
+.footer-logo {
+    width: 50px; /* Adjust the size as needed */
+    height: auto;
+}
