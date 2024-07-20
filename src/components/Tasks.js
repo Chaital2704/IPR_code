@@ -40,6 +40,13 @@ const Tasks = () => {
             created: '5 days ago',
             students: 50,
         },
+        {
+            id: 5,
+            name: 'Start Working on Assigned Project',
+            description: 'Begin work on the project assigned by your supervisor.',
+            created: '5 days ago',
+            students: 50,
+        },
     ];
 
     return (
@@ -52,51 +59,44 @@ const Tasks = () => {
                 </div>
             </header>
             <nav className="main-nav">
-                {/* Task Page */}
-                {/* <a href="#">Home</a> */}
-                {/* Ranking */}
-                <a href="#">Top</a> 
-                {/* <a href="#">Catalog</a> */}
-                {/* Community */}
+                <a href="#">Home</a>
+                <a href="#">Top</a>
                 <a href="#">Groups</a>
-                {/* Ranting Overall*/}
                 <a href="#">Rating</a>
-                {/* <a href="#">Edu</a>
-                <a href="#">API</a> */}
-                {/* Task Calendar */}
                 <a href="/calendar">Calendar</a>
-                {/* ask doubts */}
                 <a href="#">Help</a>
             </nav>
             <div className="tasks-content">
                 <div className="courses-table">
                     <h2>Tasks</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Created</th>
-                                <th>Interns</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tasks.map((task) => (
-                                <tr key={task.id}>
-                                    <td>{task.id}</td>
-                                    <td>
-                                        <strong>{task.name}</strong>
-                                        <p>{task.description}</p>
-                                    </td>
-                                    <td>{task.created}</td>
-                                    <td>
-                                        <button className="enroll-button">Enroll</button>
-                                        <span>{task.students}</span>
-                                    </td>
+                    <div className="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Created</th>
+                                    <th>Interns</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {tasks.map((task) => (
+                                    <tr key={task.id}>
+                                        <td>{task.id}</td>
+                                        <td>
+                                            <strong>{task.name}</strong>
+                                            <p>{task.description}</p>
+                                        </td>
+                                        <td>{task.created}</td>
+                                        <td>
+                                            <button className="enroll-button">Enroll</button>
+                                            <span>{task.students}</span>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div className="about-company">
                     <h3>About Our Company</h3>

@@ -1,15 +1,33 @@
-import React from 'react';
-import { useNavigate,Link } from 'react-router-dom';
-import '../Styles/signup.css'
-import logo from '../Assets/logo.png'
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
+import '../Styles/signup.css';
+import logo from '../Assets/logo.png';
 
 const Signup = () => {
     const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Add signup logic here
-        navigate('/tasks');
+        if (password !== confirmPassword) {
+            console.error("Passwords do not match");
+            return;
+        }
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/auth/register/', {
+                username,
+                email,
+                password
+            });
+            console.log('Registration successful', response.data);
+            navigate('/tasks');
+        } catch (error) {
+            console.error('Registration error', error);
+        }
     };
 
     return (
@@ -42,21 +60,21 @@ const Signup = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label>Handle</label>
-                            <input type="text" placeholder="Handle" required />
+                            <input type="text" placeholder="Handle" required value={username} onChange={(e) => setUsername(e.target.value)} />
                             <small>This means your username (nickname) on the IPR Portal. Be careful! You will be able to change it only once in the first 7 days after registration.</small>
                         </div>
                         <div className="form-group">
                             <label>Email</label>
-                            <input type="email" placeholder="Email" required />
+                            <input type="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className="form-group">
                             <label>Password</label>
-                            <input type="password" placeholder="Password" required />
+                            <input type="password" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                             <small>Password should contain at least five characters.</small>
                         </div>
                         <div className="form-group">
                             <label>Confirm Password</label>
-                            <input type="password" placeholder="Confirm Password" required />
+                            <input type="password" placeholder="Confirm Password" required value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
                         </div>
                         <button type="submit" className="button">Register</button>
                     </form>

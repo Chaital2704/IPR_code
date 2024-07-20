@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import logo from '../Assets/logo.png'
+import axios from 'axios';
+import logo from '../Assets/logo.png';
 
 const Login = () => {
     const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Add login logic here
-        navigate('/tasks');
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/auth/login/', {
+                username,
+                password
+            });
+            localStorage.setItem('token', response.data.token);
+            console.log('Login successful', response.data);
+            navigate('/tasks');
+        } catch (error) {
+            console.error('Login error', error);
+        }
     };
 
     return (
@@ -18,24 +30,15 @@ const Login = () => {
                 <h1>XYZ_INTERN</h1>
                 <div className="nav">
                     <img className="header-logo" src={logo} alt="Company Logo" />
-                    <Link to="/login">Enter</Link> | <Link to="/signup">Register</Link>
+                    <Link to="/login">Enter </Link> | <Link to="/signup">Register</Link>
                 </div>
             </header>
             <nav className="main-nav">
-                {/* Task Page */}
                 <a href="#">Home</a>
-                {/* Ranking */}
-                <a href="#">Top</a> 
-                {/* <a href="#">Catalog</a> */}
-                {/* Community */}
+                <a href="#">Top</a>
                 <a href="#">Groups</a>
-                {/* Ranting Overall*/}
                 <a href="#">Rating</a>
-                {/* <a href="#">Edu</a>
-                <a href="#">API</a> */}
-                {/* Task Calender */}
                 <a href="#">Calendar</a>
-                {/* ask doubts */}
                 <a href="#">Help</a>
             </nav>
             <div className="login-form-container">
@@ -48,17 +51,19 @@ const Login = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label>Handle/Email</label>
-                            <input type="text" placeholder="Handle/Email" required />
+                            <input type="text" placeholder="Handle/Email" required value={username} onChange={(e) => setUsername(e.target.value)} />
                         </div>
                         <div className="form-group">
                             <label>Password</label>
-                            <input type="password" placeholder="Password" required />
+                            <input type="password" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group-remember">
                             <input type="checkbox" id="rememberMe" />
                             <label htmlFor="rememberMe">Remember me for a month</label>
                         </div>
-                        <button type="submit" className="button">Login</button>
+                        <div className="button-container">
+                            <button type="submit" className="button">Login</button>
+                        </div>
                     </form>
                     <a href="#" className="forgot-password">Forgot your password?</a>
                     <a href="#" className="use-gmail">Use Gmail</a>

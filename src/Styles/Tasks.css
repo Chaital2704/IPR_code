@@ -40,7 +40,7 @@ body {
     justify-content: center;
     padding: 10px 0;
     background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd; /* Add border to all sides */
 }
 
 .main-nav a {
@@ -70,6 +70,12 @@ body {
 
 .courses-table {
     width: 60%;
+}
+
+.courses-table .table-wrapper {
+    max-height: 500px; /* Set the max height for the table wrapper */
+    overflow-y: auto; /* Add vertical scroll */
+    border: 1px solid #ddd;
 }
 
 .courses-table table {
